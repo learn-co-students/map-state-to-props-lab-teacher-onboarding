@@ -148,19 +148,18 @@ describe('the application', () => {
     });
 
     wrapper.update()
+expect(wrapper.find(Users).html()).to.include('7')
 
-    expect(wrapper.find(Users).html()).to.include('7')
 
+store.dispatch({
+  type: 'ADD_USER',
+  user: {
+    username: 'Peach',
+    hometown: 'Brewster'
+  }
+});
 
-    store.dispatch({
-      type: 'ADD_USER',
-      user: {
-        username: 'Peach',
-        hometown: 'Brewster'
-      }
-    });
-
-    wrapper.update()
+wrapper.update()
 
     expect(wrapper.find(Users).html()).to.include('8')
 
